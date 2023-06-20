@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.funcionalidadesRoutes = void 0;
+var Express = require("express");
+var FuncionalidadesController_1 = require("../controllers/FuncionalidadesController");
+var checkAuth = require('../modules/tokenValidation').checkAuth;
+var funcionalidadesValidacao = require('../modules/funcionalidadesValidacao').funcionalidadesValidacao;
+exports.funcionalidadesRoutes = Express.Router();
+exports.funcionalidadesRoutes.get('/funcionalidades', checkAuth, funcionalidadesValidacao, FuncionalidadesController_1.FuncionalidadesController.funcionalidades);
+exports.funcionalidadesRoutes.get('/funcionalidades/:page', checkAuth, funcionalidadesValidacao, FuncionalidadesController_1.FuncionalidadesController.funcionalidades);
+exports.funcionalidadesRoutes.get('/cadastrar-funcionalidade', checkAuth, funcionalidadesValidacao, FuncionalidadesController_1.FuncionalidadesController.cadastrarFuncionalidade);
+exports.funcionalidadesRoutes.post('/cadastrar-funcionalidade', checkAuth, funcionalidadesValidacao, FuncionalidadesController_1.FuncionalidadesController.cadastrarFuncionalidadePost);
+exports.funcionalidadesRoutes.post('/remover-funcionalidade', checkAuth, funcionalidadesValidacao, FuncionalidadesController_1.FuncionalidadesController.removerFuncionalidade);

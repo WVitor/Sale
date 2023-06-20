@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.usuarioRoutes = void 0;
+var Express = require("express");
+var UsuarioController_1 = require("../controllers/UsuarioController");
+var funcionalidadesValidacao = require('../modules/funcionalidadesValidacao').funcionalidadesValidacao;
+var checkAuth = require('../modules/tokenValidation').checkAuth;
+exports.usuarioRoutes = Express.Router();
+exports.usuarioRoutes.get('/admin', checkAuth, funcionalidadesValidacao, UsuarioController_1.UsuarioController.administrador);
+exports.usuarioRoutes.get('/usuarios', checkAuth, funcionalidadesValidacao, UsuarioController_1.UsuarioController.usuarios);
+exports.usuarioRoutes.get('/usuarios/:id', checkAuth, funcionalidadesValidacao, UsuarioController_1.UsuarioController.usuarios);
+exports.usuarioRoutes.get('/cadastrar-usuario', checkAuth, funcionalidadesValidacao, UsuarioController_1.UsuarioController.cadastrarUsuario);
+exports.usuarioRoutes.post('/cadastrar-usuario', checkAuth, funcionalidadesValidacao, UsuarioController_1.UsuarioController.cadastrarUsuarioPost);
+exports.usuarioRoutes.post('/remover-usuario', checkAuth, funcionalidadesValidacao, UsuarioController_1.UsuarioController.removerUsuario);
